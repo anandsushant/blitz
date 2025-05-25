@@ -1,3 +1,0 @@
-/home/sushantanand/dev/project/build/CMakeFiles/sim.dir
-/home/sushantanand/dev/project/build/CMakeFiles/edit_cache.dir
-/home/sushantanand/dev/project/build/CMakeFiles/rebuild_cache.dir
