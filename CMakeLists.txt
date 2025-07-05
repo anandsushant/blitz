@@ -13,7 +13,7 @@ include_directories(include)
 
 file(GLOB all_SRC  "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
-add_executable(sim ${all_SRC})
+add_executable(simulate ${all_SRC})
 
 target_link_libraries(sim
     ${OPENSSL_LIBRARIES}
