@@ -11,23 +11,6 @@ context_ptr on_tls_init(websocketpp::connection_hdl) {
     return ctx;
 }
 
-// void on_message(websocketpp::connection_hdl, client::message_ptr msg) {
-//     std::cout << "Received" << std::endl;
-//     parse_orderbook(msg->get_payload());
-//     return;
-// }
-
-// void on_message(client* c, websocketpp::connection_hdl hdl, client::message_ptr msg, OrderBookSnapshot* snapshot, std::mutex* mtx) {
-//     OrderBookSnapshot temp = parse_orderbook(msg->get_payload());
-
-//     {
-//         std::lock_guard<std::mutex> lock(*mtx);
-//         *snapshot = std::move(temp);
-//     }
-
-//     std::cout << "Received" << std::endl;
-// }
-
 void websocket(OrderBookSnapshot& snapshot, std::mutex& mtx) {
 
     client cli;
@@ -38,7 +21,6 @@ void websocket(OrderBookSnapshot& snapshot, std::mutex& mtx) {
 
         cli.init_asio();
         cli.set_tls_init_handler(on_tls_init);
-        // cli.set_message_handler(&on_message);
 
         cli.set_message_handler(
             [&snapshot, &mtx](websocketpp::connection_hdl hdl, client::message_ptr msg) {
